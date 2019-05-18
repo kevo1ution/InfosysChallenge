@@ -32,8 +32,12 @@ function addReq(table, callback){
 	});
 }
 
-function getReq(id, callback){
-	dbo.collection("Requests").find({"id": id}).toArray(function(err,docs){
+function getReq(field, val, callback){
+	var queryVal = {};
+	queryVal[field] = val;
+	dbo.collection("Requests").find(queryVal).toArray(function(err,docs){
+		console.log(queryVal);
+		console.log(docs);
 		callback(docs);
 	});
 }

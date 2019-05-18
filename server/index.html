@@ -11,8 +11,9 @@
 	<h1>Find Suitable Applicants</h1>
 	<div class="container">
 		<div class="form">
+			<form action="/submit" method="POST">
 				<div class="form-group">
-					<label for="account_name">Account Name: </label>
+					<label for="name">Account Name: </label>
 	            	<input type="text" id="name" name="name" placeholder="Account Name" required>
 	        	</div>
 	        	<div class="form-group">
@@ -36,24 +37,26 @@
 	            	</select>
 	        	</div>
 	        	<div class="form-group">
-	        		<label for="city">Email: </label>
-	        		<input id="email" type="text" name="email" placeholder="Email" required>
+	        		<label for="email">Email: </label>
+	        		<input id="email" type="email" name="email" placeholder="Email" required>
 	        	</div>
 	        	<div class="form-group">
-	        		<label for="start_date">Start Date: </label>
+	        		<label for="start">Start Date: </label>
 	        		<input id="start" type="date" name="start" required>
 	        	</div>
 	        	<div class="form-group">
-	        		<label for="num_employee">Number of Employees: </label>
-	        		<input id="numOfEmployees" type="text" name="num_employee" placeholder="# of Employees" required>
+	        		<label for="numOfEmployees">Number of Employees: </label>
+	        		<input id="numOfEmployees" type="text" name="numOfEmployees" placeholder="# of Employees" required>
 	        	</div>
 	        	<div class="form-group">
                     <button id="getData" class="btn btn-sm btn-primary">Submit!</button>
 				</div>
+			</form>
 	    </div>
 	</div>
 
 	<script>
+
         //test the fetch
         function postData(url = '', data = {}) {
             // Default options are marked with *
@@ -76,9 +79,11 @@
         //     .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
         //     .catch(error => console.error(error));
 
-		document.getElementById('getData').addEventListener('click', getData);
+		//document.getElementById('getData').addEventListener('click', getData);
 
-        function getData(){
+        function getData(event){
+			event.preventDefault();
+
         	let name = document.getElementById('name').value;
         	let skills = document.getElementById('skills').value;
         	let city = document.getElementById('city').value;

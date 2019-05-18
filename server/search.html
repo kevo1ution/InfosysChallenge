@@ -11,11 +11,11 @@
 	<h1>Search Database</h1>
 	<div class="container">
 		<div class="form">
-			<form>
+			<form action="/getinfo" method="POST">
 				<div class="form-group">
-					<label for="search">Pick Item to Search: </label>
-	            	<select id="search" name="search" required>
-	            		<option value="id">ID</option>
+					<label for="key">Pick Item to Search: </label>
+	            	<select id="search" name="key" required>
+	            		<option value="_id">ID</option>
 	            		<option value="name">Account Name</option>
 	            		<option value="skills">Skills</option>
 	            		<option value="city">City</option>
@@ -26,13 +26,17 @@
 	            	</select>
 	        	</div>
 	        	<div class="form-group">
-	        		<label for="city">Value: </label>
+	        		<label for="value">Value: </label>
 	        		<input id="value" type="text" name="value" required>
 	        	</div>
 	        	<div class="form-group">
                     <button id="" class="btn btn-sm btn-primary">Search</button>
                 </div>
 	        </form>
-	    </div>
+		</div>
+		
+		<script>
+
+		</script>
 </body>
 </html>
