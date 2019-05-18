@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Web App</title>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- MainCSS -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<h1>Find Suitable Applicants</h1>
+	<div class="container">
+		<div class="form">
+				<div class="form-group">
+					<label for="account_name">Account Name: </label>
+	            	<input type="text" id="name"name="account_name" placeholder="Account Name" required>
+	        	</div>
+	        	<div class="form-group">
+					<label for="skills">Skills: </label>
+	            	<select id="skills" name="skills" required>
+	            		<option value="Java">Java</option>
+	            		<option value="Python">Python</option>
+	            		<option value="C++">C++</option>
+	            	</select>
+	        	</div>
+	        	<div class="form-group">
+	        		<label for="city">City: </label>
+	        		<input id="city" type="text" name="city" placeholder="City" required>
+	        	</div>
+	        	<div class="form-group">
+					<label for="exp">Years of Exp: </label>
+	            	<select id="exp" name="exp" required>
+	            		<option value="1_yr">1 yr</option>
+	            		<option value="2_yr">2 yr</option>
+	            		<option value="3_yr">3 yr</option>
+	            	</select>
+	        	</div>
+	        	<div class="form-group">
+	        		<label for="city">Email: </label>
+	        		<input id="email" type="text" name="email" placeholder="Email" required>
+	        	</div>
+	        	<div class="form-group">
+	        		<label for="start_date">Start Date: </label>
+	        		<input id="start" type="date" name="start_date" required>
+	        	</div>
+	        	<div class="form-group">
+	        		<label for="num_employee">Number of Employees: </label>
+	        		<input id="numOfEmployees" type="text" name="num_employee" placeholder="# of Employees" required>
+	        	</div>
+	        	<div class="form-group">
+                    <button id="getData" class="btn btn-sm btn-primary">Submit!</button>
+                </div>
+	    </div>
+	</div>
+
+	<script>
+        //test the fetch
+        function postData(url = '', data = {}) {
+            // Default options are marked with *
+            return fetch(url, {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, cors, *same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrer: 'no-referrer', // no-referrer, *client
+                body: JSON.stringify(data), // body data type must match "Content-Type" header
+            })
+            .then(response => response.json()); // parses JSON response into native Javascript objects 
+        }
+        // postData('http://localhost:8001/submit', {answer: 42})
+        //     .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+        //     .catch(error => console.error(error));
+
+        document.getElementById('getData').addEventListener('click', getData);
+
+        function getData(){
+        	let name = document.getElementById('name').value;
+        	let skills = document.getElementById('skills').value;
+        	let city = document.getElementById('city').value;
+        	let exp = document.getElementById('exp').value;
+        	let email = document.getElementById('email').value;
+        	let start = document.getElementById('start').value;
+        	let numOfEmployees = document.getElementById('numOfEmployees').value;
+
+        	data = {"name": name, 
+        	        "skills": skills,
+        	        "city": city,
+        	        "exp": exp,
+        	        "email": email,
+        	        "start": start,
+        	        "numOfEmployees": numOfEmployees
+        	        };
+        	console.log(data);
+        }
+    </script>
+</body>
+</html>
